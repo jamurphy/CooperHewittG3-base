@@ -1,0 +1,28 @@
+# EMBEDDED SERVER CONFIGURATION (ServerProperties)
+server:
+  port: 9080
+spring:
+  profiles.active: default
+---
+spring:
+  profiles: default
+  thymeleaf.cache: false
+spring.datasource:
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost/caf_assignment1
+  username: root
+  password:
+  schema:
+  data:
+---
+spring:
+  profiles: test
+spring.datasource:
+  driverClassName: org.h2.Driver
+  url: jdbc:h2:mem:sampletest;MODE=MySQL
+  schema: caf_assignment1-schema_h2.sql
+  data: caf_assignment1-data_h2.sql
+
+
+
+  
