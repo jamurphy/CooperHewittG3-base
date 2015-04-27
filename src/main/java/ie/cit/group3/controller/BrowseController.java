@@ -2,6 +2,7 @@ package ie.cit.group3.controller;
 
 import java.util.List;
 
+import ie.cit.group3.JdbcTemplateTestApplication;
 import ie.cit.group3.domain.ChObject;
 import ie.cit.group3.domain.Image;
 import ie.cit.group3.domain.Participant;
@@ -39,7 +40,17 @@ public class BrowseController {
 			List<ChObject> listobjects =chobject.findAll();
 			model.addAttribute("objects", listobjects);
 		    return "displayObjects";			
-		}    
+		}  
+//	
+//	@RequestMapping(value="/listall/import", method = RequestMethod.GET) 
+//	public String importObjects(ModelMap model) {			
+//			
+//		JdbcTemplateTestApplication importObjects = new JdbcTemplateTestApplication();
+//			
+//		List<ChObject> listobjects =chobject.findAll();
+//			model.addAttribute("objects", listobjects);
+//		    return "displayObjects";			
+//		}   
 	
 	@RequestMapping(value="/listall/roles", method = RequestMethod.GET) 
 	public String listRole(ModelMap model) {			

@@ -96,7 +96,8 @@ public class JdbcTemplateTestApplication //implements CommandLineRunner {
 		//Hardcoding the directories to scan as reading the directory as an argument in 'Run Configurations...' was
 		//causing an issue when I started using JUnit test.  A better way to do this would be to put the following
 		//information into a properties file.
-		String directory ="/Users/john/Documents/Git/Smithsonian/collection/objects/682/683/";
+	//	String directory ="/Users/john/Documents/Git/Smithsonian/collection/objects/682/683/";
+		String directory ="/Users/john/Documents/Git/Smithsonian/collection/objects/180/";
 
 
 		ChObject object;								//Create reference to ChObject
