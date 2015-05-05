@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<!--  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>-->
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet"
+	href="/css/bootstrap-theme.min.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Display One Cultural Heritage Object</title>
+</head>
+
+
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="http://localhost:9080/home">Cooper-Hewitt Design Museum</a>
+			</div>
+			<div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="http://localhost:9080/browse/listall/objects">View all objects</a></li>
+					<li><a href="http://localhost:9080/browse/listall/roles">View all Roles</a></li>
+					<li><a href="http://localhost:9080/browse/listall/participants">View all Participants</a></li>
+					<li><a href="http://localhost:9080/browse/listall/images">View all Images</a></li>
+					<!--         <li><a href="import">View all CHObjects from JSON files</a></li> -->
+				</ul>
+				
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="http://localhost:9080/login"><span
+							class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+					<li><a href="http://localhost:9080/login"><span
+							class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+<!-- End of Navbar -->
+
+	<div class="table-responsive">
+		<table class="table">
+			<!-- <table> -->
+			<thead>
+				<tr>
+					<th class="col-sm-1">Object ID</th>
+					<th th:text="${object.id}" class="col-sm-10"></th>
+					<th class="col-sm-1"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Title</td>
+					<td th:text="${object.title}"></td>
+					<td></td>
+				</tr>
+
+				<tr>
+					<td>Description</td>
+					<td th:text="${object.description}"></td>
+
+					<td><a
+						th:href="@{http://localhost:9080/description/(id=${object.id})}"
+						class="btn btn-info btn-lg">Edit Description</a></td>
+				
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+			
+
+	<div class="row">
+		<div class="col-sm-7">
+	
+			<img th:src="@{${image.url}}"></img>	
+		</div>
+		
+		<div class="col-sm-5">
+			
+					<form role="form">
+						<div class="form-group">
+							<label for="comment">Update Description:</label>
+							<textarea class="form-control" rows="5" id="comment"></textarea>
+						</div>
+					</form>
+					
+			<div class="table-responsive">
+				<table class="table">
+					<tr>
+						<td>Date</td>
+						<td th:text="${object.date}"></td>
+					</tr>
+					<tr>
+						<td>Medium</td>
+						<td th:text="${object.medium}"></td>
+					</tr>
+					<tr>
+						<td>Credit Line</td>
+						<td th:text="${object.creditline}"></td>
+					</tr>
+					<tr>
+						<td>Gallery Text</td>
+						<td th:text="${object.gallery_text}"></td>
+					</tr>
+				</table>
+			</div>	
+				
+			<a href="Comment" class="btn btn-info btn-lg">Add Comment</a>
+				
+			<a href="Tag" class="btn btn-info btn-lg">Add Tag word</a>
+		</div>
+	</div>
+
+</body>
+</html>
