@@ -71,3 +71,5 @@ INSERT INTO role (role_id, role_name, role_display_name, role_url) VALUES
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+INSERT INTO users (username, password, enabled) VALUES ('user', 'password', 1);

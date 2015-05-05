@@ -67,6 +67,36 @@ public class JdbcImageRepository implements ImageRepository
 		else
 			return null;
 	}
+	
+	@Override
+	public List<Image> getO(String id) 
+	{
+		/* This method retrieves an Image based on a supplied String based 'id'.
+		 * 
+		 * Need to check that the record exists in the database first before returning it.
+		 * Otherwise if the record does not exist, you will get an exception that the application
+		 * cannot handle.
+		 * Using a SQL COUNT statement to return the number of records.  This will return an integer
+		 * 'count'.  If this is 0, then no match exists and the return type of the object is set to 
+		 * null. If 'count' is >0, then run the SQL query to return the number of records that match
+		 * the supplied String 'id'.
+		 * 
+		 * */
+		
+		String sql = "SELECT COUNT(*) FROM image WHERE chObject_id = ?";
+		@SuppressWarnings("deprecation")
+		int count = jdbcTemplate.queryForInt(sql, new Object [] {id});
+		
+		if (count > 0)
+		{
+			sql = "SELECT * FROM image WHERE chObject_id = ?;";
+			List<Image> images = jdbcTemplate.query(sql, new Object [] {id}, new ImageRowMapper());
+			return images;
+		}
+		else
+			return null;
+	}
+
 
 	@Override
 	public void save(Image image) 

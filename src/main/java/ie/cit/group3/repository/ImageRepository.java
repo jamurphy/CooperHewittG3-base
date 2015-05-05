@@ -1,6 +1,7 @@
 package ie.cit.group3.repository;
 
 import ie.cit.group3.domain.Image;
+
 import java.util.List;
 
 /**
@@ -26,5 +27,7 @@ public interface ImageRepository {
 	public void remove(Image image);
 	
 	public List<Image> findAll();
+
+	List<Image> getO(String id);  //JM added 5/5/2015
 
 }

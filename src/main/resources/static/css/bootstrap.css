@@ -226,8 +226,14 @@ th {
   img {
     page-break-inside: avoid;
   }
+  /*jm entered */
   img {
-    max-width: 100% !important;
+    width: 100%!important;
+}
+  img {
+/*   	  width: 100%; */
+    max-width: 100%;/* !important; */
+/*     horizontal-align: middle; */
   }
   p,
   h2,

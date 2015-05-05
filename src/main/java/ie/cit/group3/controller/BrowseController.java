@@ -7,6 +7,7 @@ import ie.cit.group3.domain.ChObject;
 import ie.cit.group3.domain.Image;
 import ie.cit.group3.domain.Participant;
 import ie.cit.group3.domain.Role;
+import ie.cit.group3.repository.ImageRepository;
 import ie.cit.group3.service.ChObjectService;
 import ie.cit.group3.service.ImageService;
 import ie.cit.group3.service.ParticipantService;
@@ -32,7 +33,7 @@ public class BrowseController {
 	ParticipantService participants;
 	
 	@Autowired
-	ImageService images;
+	ImageRepository images;  //changed to Repository (from Service 5/5/2015...change back once debugged)
 	
 	@RequestMapping(value="/listall/objects", method = RequestMethod.GET) 
 	public String listAll(ModelMap model) {			
@@ -41,6 +42,49 @@ public class BrowseController {
 			model.addAttribute("objects", listobjects);
 		    return "displayObjects";			
 		}  
+	
+	@RequestMapping(value="/object/id", method = RequestMethod.GET) 
+	public String listObject(ModelMap model) {			
+			
+		//next step to pass chObjectID in as parameter
+		String id = "18094365";
+		
+			ChObject object = chobject.get(id);
+			Image objectimage= new Image();
+			
+			List<Image> objectImages = images.getO(id);
+			int maxwidth = 0;
+
+			if (objectImages != null)
+			{
+				for (int i = 0; i < objectImages.size() ; i++)
+				{
+					if (objectImages.get(i).getUrl() != null)
+					{
+						if (objectImages.get(i).getWidth() > maxwidth)
+						{
+							maxwidth = objectImages.get(i).getWidth();
+							objectimage = objectImages.get(i);
+						}		
+					}
+				}
+			}
+			else
+			{
+				System.out.println("No objects!");
+			}
+			
+			System.out.println(objectimage);
+//			System.out.println(allimages.get(10));
+//			System.out.println(allimages.get(12));
+//			System.out.println(objectimage);
+//			if (objectimage==null)
+//				objectimage = allimages.get(0);
+			model.addAttribute("object", object);
+			model.addAttribute("image", objectimage);
+		    return "displayItem";			
+		}  
+	
 //	
 //	@RequestMapping(value="/listall/import", method = RequestMethod.GET) 
 //	public String importObjects(ModelMap model) {			
