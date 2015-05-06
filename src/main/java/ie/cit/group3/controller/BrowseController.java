@@ -115,31 +115,8 @@ public class BrowseController {
 		}
 		ChObject object = objects.get(index);
 		Image objectimage = images1.get(imageindex);
-//		
-//			ChObject object = chobject.get(id);
-//			Image objectimage= new Image();
-//			
-//			List<Image> objectImages = images.getO(id);
-//			int maxwidth = 0;
-//
-//			if (objectImages != null)
-//			{
-//				for (int i = 0; i < objectImages.size() ; i++)
-//				{
-//					if (objectImages.get(i).getUrl() != null)
-//					{
-//						if (objectImages.get(i).getWidth() > maxwidth)
-//						{
-//							maxwidth = objectImages.get(i).getWidth();
-//							objectimage = objectImages.get(i);
-//						}		
-//					}
-//				}
-//			}
-//			else
-//			{
-//				System.out.println("No objects!");
-//			}
+
+		
 			System.out.println("CH Object info: "+object);
 			System.out.println("Image info: "+objectimage);
 //			System.out.println(allimages.get(10));
